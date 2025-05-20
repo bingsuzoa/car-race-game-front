@@ -1,36 +1,43 @@
 import styled from 'styled-components';
 
-interface InputProps {
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-  type?: 'text' | 'number';
-}
-
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  width: 100%;
 `;
 
-const Label = styled.label`
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
+const StyledLabel = styled.label`
+  font-family: 'Gaegu', cursive;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4ECDC4;
+  margin-bottom: 0.8rem;
+  display: block;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
 `;
 
 const StyledInput = styled.input`
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  font-family: 'Gaegu', cursive;
+  font-size: 1.3rem;
+  padding: 12px 16px;
+  border: 2px solid #4ECDC4;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.95);
+  color: #333;
+  transition: all 0.3s ease;
   width: 100%;
-  
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
   &:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #FF6B6B;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+  }
+
+  &::placeholder {
+    color: #aaa;
+    font-size: 1.1rem;
   }
 
   /* number 타입 input의 화살표 스타일링 */
@@ -44,7 +51,15 @@ const StyledInput = styled.input`
   }
 `;
 
-const Input = ({ label, value, onChange, placeholder, type = 'text' }: InputProps) => {
+interface InputProps {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  type?: string;
+  placeholder?: string;
+}
+
+const Input = ({ label, value, onChange, type = 'text', placeholder }: InputProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (type === 'number') {
       const value = e.target.value;
@@ -58,7 +73,7 @@ const Input = ({ label, value, onChange, placeholder, type = 'text' }: InputProp
 
   return (
     <InputContainer>
-      <Label>{label}</Label>
+      <StyledLabel>{label}</StyledLabel>
       <StyledInput
         type={type}
         value={value}

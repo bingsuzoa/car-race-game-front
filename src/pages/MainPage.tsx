@@ -15,7 +15,7 @@ const PageContainer = styled.div`
   bottom: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const Container = styled.div`
@@ -27,25 +27,28 @@ const Container = styled.div`
   padding: 0 20px;
   position: relative;
   z-index: 1;
+  margin-top: 0;
 `;
 
 const Title = styled.h1`
   font-family: 'Gaegu', cursive;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  color: #333;
+  color: #FF6B6B;
   margin-bottom: 2rem;
   text-align: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 3px 3px 0px #FFD93D;
+  letter-spacing: 2px;
 `;
 
 const InputLabel = styled.label`
   font-family: 'Gaegu', cursive;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #333;
-  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4ECDC4;
+  margin-bottom: 0.8rem;
   display: block;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
 `;
 
 const Form = styled.form`
@@ -53,12 +56,11 @@ const Form = styled.form`
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   padding: 32px;
-  border-radius: 16px;
+  border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
 `;
 
 const ButtonContainer = styled.div`
@@ -70,17 +72,18 @@ const ButtonContainer = styled.div`
 
 const ErrorMessage = styled.div`
   font-family: 'Gaegu', cursive;
-  color: #ff6b6b;
-  font-size: 0.9rem;
+  color: #FF6B6B;
+  font-size: 1.2rem;
+  font-weight: 700;
   margin: 8px 0;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 6px 12px;
+  padding: 8px 16px;
   background-color: rgba(255, 107, 107, 0.1);
-  border-radius: 6px;
-  border: 1px solid rgba(255, 107, 107, 0.2);
+  border-radius: 12px;
+  border: 2px solid #FF6B6B;
 `;
 
 const MainPage = () => {
@@ -145,13 +148,13 @@ const MainPage = () => {
         <Title>자동차 경주 게임</Title>
         <Form onSubmit={handleSubmit}>
           <Input
-            label="자동차 이름"
+            label="🚗 자동차 이름"
             value={carNames}
             onChange={setCarNames}
             placeholder="자동차 이름을 쉼표(,)로 구분하여 입력하세요"
           />
           <Input
-            label="시도할 횟수"
+            label="🎯 시도할 횟수"
             value={raceCount}
             onChange={handleRaceCountChange}
             type="number"
@@ -163,7 +166,7 @@ const MainPage = () => {
               onClick={() => handleSubmit(new Event('submit') as any)} 
               disabled={!isValid || isLoading}
             >
-              {isLoading ? '게임 시작 중...' : '게임 시작'}
+              {isLoading ? '게임 시작 중... 🏃‍♂️' : '게임 시작! 🏁'}
             </Button>
           </ButtonContainer>
         </Form>
