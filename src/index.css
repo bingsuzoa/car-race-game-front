@@ -1,3 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-stage-gold-900;
+  }
+}
+
+@layer components {
+  .spotlight-beam {
+    @apply absolute w-[500px] h-[500px] bg-gradient-to-b from-spotlight-light via-spotlight-medium to-transparent opacity-70 blur-2xl;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+  
+  .stage-platform {
+    @apply relative w-[800px] h-[400px] bg-gradient-to-b from-stage-gold-400 via-stage-gold-500 to-stage-gold-600 rounded-[200px] shadow-stage;
+    transform: perspective(1000px) rotateX(10deg);
+  }
+  
+  .stage-platform::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-b from-white/20 to-transparent rounded-[200px];
+  }
+  
+  .stage-platform::after {
+    content: '';
+    @apply absolute -bottom-10 left-1/2 -translate-x-1/2 w-[700px] h-20 bg-stage-gold-700/30 blur-xl;
+  }
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

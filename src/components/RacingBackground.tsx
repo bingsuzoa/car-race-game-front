@@ -63,7 +63,7 @@ const CuteHouse = ({ left, bottom }: { left: string; bottom: string }) => (
 );
 
 const Tree = styled.div<{ left: string; bottom: string; }>`
-  position: absolute;
+    position: absolute;
   left: ${props => props.left};
   bottom: ${props => props.bottom};
   z-index: 2;

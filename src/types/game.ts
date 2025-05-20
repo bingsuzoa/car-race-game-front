@@ -12,6 +12,8 @@ export interface GameData {
     cars: Car[];
   };
   isEnd: boolean;
+  race: number;
+  round: number;
 }
 
 export interface GameResponse {
